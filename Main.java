@@ -13,7 +13,7 @@ import util.convexHull;
 public class Main {
   public static void main(String[] args) {
     // load points.txt
-    List<double[]> points = new ArrayList<double[]>();
+    List<Point> points = new ArrayList<Point>();
 
     BufferedReader br;
     try {
@@ -23,23 +23,23 @@ public class Main {
 
       while ((st = br.readLine()) != null) {
         String[] split = st.split(", ");
-        points.add(new double[] { Double.parseDouble(split[0]), Double.parseDouble(split[1]) });
+        points.add(new Point(Double.parseDouble(split[0]), Double.parseDouble(split[1])));
       }
 
       br.close();
 
-      List<double[]> path = convexHull.computeConvexHull(points);
+      List<Point> path = convexHull.computeConvexHull(points);
 
       BufferedWriter bw = new BufferedWriter(new FileWriter("./path.txt"));
 
-      for (double[] p : path) {
-        bw.write(p[0] + ", " + p[1] + "\n");
+      for (Point p : path) {
+        bw.write(p.x + ", " + p.y + "\n");
       }
-      bw.write("Length: " + convexHull.pathCost(path.toArray(new double[0][0])));
+      bw.write("Length: " + convexHull.pathCost(path.toArray(new Point[0])));
 
       bw.close();
     } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
+      // TODO Auto-generated catch block6
       e.printStackTrace();
     } catch (IOException e) {
       // TODO Auto-generated catch block
