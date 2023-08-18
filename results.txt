@@ -1,0 +1,23 @@
+552
+Truck [x=8, y=7, miles=232.76]
+103491.40000000001
+Employee [hours=90810]
+4086330
+
+569
+Truck [x=146, y=18, miles=254.0]
+103810.0
+Employee [hours=94560]
+4255080
+
+583
+Truck [x=12, y=48, miles=231.68]
+103475.2
+Employee [hours=96180]
+4327980
+
+632
+Truck [x=126, y=43, miles=301.24]
+104518.59999999999
+Employee [hours=111690]
+5025930
