@@ -42,61 +42,83 @@ public class parser {
       System.out.println(cycleInfo.cycleNumber);
       System.out.println(cycleInfo.totalPackages);
 
-      Truck truck1 = new Truck(0, 0);
-      Employee employee1 = new Employee();
-      truck1.employees[0] = employee1;
-
-      Truck truck2 = new Truck(0, 0);
-      Employee employee2 = new Employee();
-      truck2.employees[0] = employee2;
-
-      // for (Address a : cycleInfo.addresses) {
-      // System.out.println(a.blockX + " " + a.blockY + " " + a.blockNumber);
-      // truck1.deliver(a.blockX, a.blockY);
-      // }
-
-      // split into a north and south side
-      ArrayList<Address> northSide = new ArrayList<Address>();
-      ArrayList<Address> southSide = new ArrayList<Address>();
+      ArrayList<Address> NWSide = new ArrayList<Address>();
+      ArrayList<Address> NESide = new ArrayList<Address>();
+      ArrayList<Address> SWSide = new ArrayList<Address>();
+      ArrayList<Address> SESide = new ArrayList<Address>();
       for (Address a : cycleInfo.addresses) {
         if (a.blockY < 25) {
-          northSide.add(a);
+          if (a.blockX < 125) {
+            NWSide.add(a);
+          } else {
+            NESide.add(a);
+          }
         } else {
-          southSide.add(a);
+          if (a.blockX < 125) {
+            SWSide.add(a);
+          } else {
+            SESide.add(a);
+          }
         }
       }
 
-      // // sort north side
-      // List<Address> northPath = convexWrapper(northSide);
-      // // sort south side
-      // List<Address> southPath = convexWrapper(southSide);
+      List<Address> NWPath = christofidesWrapper(NWSide);
+      List<Address> NEPath = christofidesWrapper(NESide);
+      List<Address> SWPath = christofidesWrapper(SWSide);
+      List<Address> SEPath = christofidesWrapper(SESide);
 
-      // sort north side
-      List<Address> northPath = christofidesWrapper(northSide);
-      // sort south side
-      List<Address> southPath = christofidesWrapper(southSide);
+      Truck NWTruck = new Truck(0, 0);
+      Truck NETruck = new Truck(0, 0);
+      Truck SWTruck = new Truck(0, 0);
+      Truck SETruck = new Truck(0, 0);
+      Employee NWEmployee = new Employee();
+      Employee NEEmployee = new Employee();
+      Employee SWEmployee = new Employee();
+      Employee SEEmployee = new Employee();
+      NWTruck.employees[0] = NWEmployee;
+      NETruck.employees[0] = NEEmployee;
+      SWTruck.employees[0] = SWEmployee;
+      SETruck.employees[0] = SEEmployee;
 
-      // follow paths
-      for (Address a : northPath) {
-        truck1.deliver(a.blockX, a.blockY);
+      for (Address a : NWPath) {
+        NWTruck.deliver(a.blockX, a.blockY);
       }
-
-      for (Address a : southPath) {
-        truck2.deliver(a.blockX, a.blockY);
+      for (Address a : NEPath) {
+        NETruck.deliver(a.blockX, a.blockY);
+      }
+      for (Address a : SWPath) {
+        SWTruck.deliver(a.blockX, a.blockY);
+      }
+      for (Address a : SEPath) {
+        SETruck.deliver(a.blockX, a.blockY);
       }
 
       System.out.println();
-      System.out.println(northSide.size());
-      System.out.println(truck1);
-      System.out.println(truck1.cost());
-      System.out.println(employee1);
-      System.out.println(employee1.cost());
+      System.out.println(NWPath.size());
+      System.out.println(NWTruck);
+      System.out.println(NWTruck.cost());
+      System.out.println(NWEmployee);
+      System.out.println(NWEmployee.cost());
       System.out.println();
-      System.out.println(southSide.size());
-      System.out.println(truck2);
-      System.out.println(truck2.cost());
-      System.out.println(employee2);
-      System.out.println(employee2.cost());
+      System.out.println(NEPath.size());
+      System.out.println(NETruck);
+      System.out.println(NETruck.cost());
+      System.out.println(NEEmployee);
+      System.out.println(NEEmployee.cost());
+      System.out.println();
+      System.out.println(SWPath.size());
+      System.out.println(SWTruck);
+      System.out.println(SWTruck.cost());
+      System.out.println(SWEmployee);
+      System.out.println(SWEmployee.cost());
+      System.out.println();
+      System.out.println(SEPath.size());
+      System.out.println(SETruck);
+      System.out.println(SETruck.cost());
+      System.out.println(SEEmployee);
+      System.out.println(SEEmployee.cost());
+      System.out.println();
+
     } catch (FileNotFoundException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -222,6 +244,9 @@ class Truck {
       e.hours += 60; // 1 minute per package
     }
     this.distance += xDiff * 1000 + yDiff * 200;
+
+    this.x = x;
+    this.y = y;
   }
 
   @Override
