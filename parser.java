@@ -1,12 +1,15 @@
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
 import util.Point;
 import util.convexHull;
+import util.christofides;
 
 public class parser {
   public static void main(String[] args) {
@@ -56,17 +59,22 @@ public class parser {
       ArrayList<Address> northSide = new ArrayList<Address>();
       ArrayList<Address> southSide = new ArrayList<Address>();
       for (Address a : cycleInfo.addresses) {
-        if (a.blockY < 250) {
+        if (a.blockY < 25) {
           northSide.add(a);
         } else {
           southSide.add(a);
         }
       }
 
+      // // sort north side
+      // List<Address> northPath = convexWrapper(northSide);
+      // // sort south side
+      // List<Address> southPath = convexWrapper(southSide);
+
       // sort north side
-      List<Address> northPath = convexWrapper(northSide);
+      List<Address> northPath = christofidesWrapper(northSide);
       // sort south side
-      List<Address> southPath = convexWrapper(southSide);
+      List<Address> southPath = christofidesWrapper(southSide);
 
       // follow paths
       for (Address a : northPath) {
@@ -77,10 +85,17 @@ public class parser {
         truck2.deliver(a.blockX, a.blockY);
       }
 
+      System.out.println();
+      System.out.println(northSide.size());
+      System.out.println(truck1);
       System.out.println(truck1.cost());
+      System.out.println(employee1);
       System.out.println(employee1.cost());
       System.out.println();
+      System.out.println(southSide.size());
+      System.out.println(truck2);
       System.out.println(truck2.cost());
+      System.out.println(employee2);
       System.out.println(employee2.cost());
     } catch (FileNotFoundException e) {
       // TODO Auto-generated catch block
@@ -105,6 +120,29 @@ public class parser {
       result.add(new Address((int) p.x, (int) p.y, 0));
     }
     return result;
+  }
+
+  public static List<Address> christofidesWrapper(List<Address> addresses) {
+    double[][] points = new double[addresses.size()][2];
+    for (int i = 0; i < addresses.size(); i++) {
+      points[i][0] = (double) addresses.get(i).blockX;
+      points[i][1] = (double) addresses.get(i).blockY;
+    }
+    // christofides works off a weight(distance) matrix
+    // we can just do abs(x1-x2) + abs(y1-y2)
+    double[][] graph = new double[addresses.size()][addresses.size()];
+    for (int i = 0; i < addresses.size(); i++) {
+      for (int j = 0; j < addresses.size(); j++) {
+        graph[i][j] = Math.abs(points[i][0] - points[j][0]) + Math.abs(points[i][1] - points[j][1]);
+      }
+    }
+    // List<Integer> order = christofides.christofidesTSP(points);
+    List<Integer> order = christofides.christofidesTSP(graph);
+    List<Address> path = new ArrayList<Address>();
+    for (int i = 0; i < order.size(); i++) {
+      path.add(addresses.get(order.get(i)));
+    }
+    return path;
   }
 }
 
@@ -153,18 +191,19 @@ class Truck {
   public int x;
   public int y;
   public Employee[] employees = new Employee[2];
-  public int miles;
+  public int distance;
 
   public Truck(int x, int y) {
     this.x = x;
     this.y = y;
-    this.miles = 0;
+    this.distance = 0;
   }
 
-  public int cost() {
+  public double cost() {
     // base of 100k
     // 5 dollars per mile for gas
     // 1000 dollars per 100 miles for maintenance
+    double miles = distance / 5000.0;
     return 100000 + (5 * miles) + (1000 * (miles / 100));
   }
 
@@ -182,6 +221,12 @@ class Truck {
       e.hours += (xDiff + yDiff) * 30;
       e.hours += 60; // 1 minute per package
     }
+    this.distance += xDiff * 1000 + yDiff * 200;
+  }
+
+  @Override
+  public String toString() {
+    return "Truck [x=" + x + ", y=" + y + ", miles=" + (distance / 5000.0) + "]";
   }
 }
 
@@ -192,5 +237,10 @@ class Employee {
     // 30 dollars per hour
     // 45 instead if overtime
     return 30 * hours + 15 * (hours - 8);
+  }
+
+  @Override
+  public String toString() {
+    return "Employee [hours=" + hours + "]";
   }
 }
