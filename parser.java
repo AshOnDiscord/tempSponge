@@ -3,6 +3,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import util.Point;
+import util.convexHull;
 
 public class parser {
   public static void main(String[] args) {
@@ -39,12 +43,45 @@ public class parser {
       Employee employee1 = new Employee();
       truck1.employees[0] = employee1;
 
+      Truck truck2 = new Truck(0, 0);
+      Employee employee2 = new Employee();
+      truck2.employees[0] = employee2;
+
+      // for (Address a : cycleInfo.addresses) {
+      // System.out.println(a.blockX + " " + a.blockY + " " + a.blockNumber);
+      // truck1.deliver(a.blockX, a.blockY);
+      // }
+
+      // split into a north and south side
+      ArrayList<Address> northSide = new ArrayList<Address>();
+      ArrayList<Address> southSide = new ArrayList<Address>();
       for (Address a : cycleInfo.addresses) {
-        System.out.println(a.blockX + " " + a.blockY + " " + a.blockNumber);
+        if (a.blockY < 250) {
+          northSide.add(a);
+        } else {
+          southSide.add(a);
+        }
+      }
+
+      // sort north side
+      List<Address> northPath = convexWrapper(northSide);
+      // sort south side
+      List<Address> southPath = convexWrapper(southSide);
+
+      // follow paths
+      for (Address a : northPath) {
         truck1.deliver(a.blockX, a.blockY);
       }
+
+      for (Address a : southPath) {
+        truck2.deliver(a.blockX, a.blockY);
+      }
+
       System.out.println(truck1.cost());
       System.out.println(employee1.cost());
+      System.out.println();
+      System.out.println(truck2.cost());
+      System.out.println(employee2.cost());
     } catch (FileNotFoundException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -52,6 +89,22 @@ public class parser {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+  }
+
+  public static List<Address> convexWrapper(List<Address> addresses) {
+    // convert to points
+    List<Point> points = new ArrayList<Point>();
+    for (Address a : addresses) {
+      points.add(new Point(a.blockX, a.blockY));
+    }
+    // compute convex hull
+    List<Point> hull = convexHull.computeConvexHull(points);
+    // convert back to addresses
+    List<Address> result = new ArrayList<Address>();
+    for (Point p : hull) {
+      result.add(new Address((int) p.x, (int) p.y, 0));
+    }
+    return result;
   }
 }
 

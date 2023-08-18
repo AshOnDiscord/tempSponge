@@ -48,6 +48,10 @@ public class convexHull {
     }
 
     while (!points.isEmpty()) {
+      if (points.size() % 100 == 0) {
+        System.out.println(points.size());
+      }
+
       double bestRatio = Double.POSITIVE_INFINITY;
       int bestPointIdx = 0;
       int insertIdx = 0;
