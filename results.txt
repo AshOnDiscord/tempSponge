@@ -27,3 +27,21 @@ Employee [hours=107940]
 1,069.68
 18,043,620
 400,980
+
+CycleInfo [cycleNumber=1, totalPackages=2647, addresses=2336]
+
+Truck [x=125, y=23, miles=258.56] | $103,878.40
+Employee [hours=90900] | $4,090,380
+
+Truck [x=125, y=23, miles=214.88] | $103,223.20
+Employee [hours=85260] | $3,836,580
+
+Truck [x=125, y=23, miles=275.6] | $104,134.00
+Employee [hours=110340] | $4,965,180
+
+Truck [x=125, y=23, miles=315.92] | $104,738.80
+Employee [hours=112620] | $5,067,780
+
+Total Truck Cost: $415,974.40
+Total Employee Cost: $17,959,920
+Total Cost: $18,375,894.40

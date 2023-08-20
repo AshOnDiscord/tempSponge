@@ -55,6 +55,8 @@ public class Truck {
       e.hours += (xDiff + yDiff) * 30;
     }
     this.distance += xDiff * 1000 + yDiff * 200;
+    this.x = originX;
+    this.y = originY;
   }
 
   @Override

@@ -6,4 +6,11 @@ public class CycleInfo {
   public int cycleNumber;
   public int totalPackages;
   public ArrayList<Address> addresses;
+
+  @Override
+  public String toString() {
+    return "CycleInfo [cycleNumber=" + cycleNumber + ", totalPackages=" + totalPackages + ", addresses="
+        + addresses.size()
+        + "]";
+  }
 }
