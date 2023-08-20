@@ -1,32 +1,31 @@
 package util;
 
-// import util.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-public class convexHull {
-  public static List<Point> computeConvexHull(List<Point> points) {
-    Point sp = points.get(0);
+public class ConvexHull {
+  public static List<Address> computeConvexHull(List<Address> points) {
+    Address sp = points.get(0);
 
     // Find the "leftmost point"
-    Point leftmost = points.get(0);
-    for (Point p : points) {
-      if (p.x < leftmost.x) {
+    Address leftmost = points.get(0);
+    for (Address p : points) {
+      if (p.blockX < leftmost.blockX) {
         leftmost = p;
       }
     }
 
-    List<Point> path = new ArrayList<>();
+    List<Address> path = new ArrayList<>();
     path.add(leftmost);
 
     while (true) {
-      Point curPoint = path.get(path.size() - 1);
+      Address curPoint = path.get(path.size() - 1);
       int selectedIdx = 0;
-      Point selectedPoint = null;
+      Address selectedPoint = null;
 
       // find the "most counterclockwise" point
       for (int idx = 0; idx < points.size(); idx++) {
-        Point p = points.get(idx);
+        Address p = points.get(idx);
         if (selectedPoint == null || orientation(curPoint, p, selectedPoint) == 2) {
           // this point is counterclockwise with respect to the current hull
           // and selected point (e.g. more counterclockwise)
@@ -57,7 +56,7 @@ public class convexHull {
       int insertIdx = 0;
 
       for (int freeIdx = 0; freeIdx < points.size(); freeIdx++) {
-        Point freePoint = points.get(freeIdx);
+        Address freePoint = points.get(freeIdx);
         double bestCost = Double.POSITIVE_INFINITY;
         int bestIdx = 0;
 
@@ -65,12 +64,12 @@ public class convexHull {
         // that minimizes the cost of adding the point minus the cost of
         // the original segment
         for (int pathIdx = 0; pathIdx < path.size(); pathIdx++) {
-          Point pathPoint = path.get(pathIdx);
-          Point nextPathPoint = path.get((pathIdx + 1) % path.size());
+          Address pathPoint = path.get(pathIdx);
+          Address nextPathPoint = path.get((pathIdx + 1) % path.size());
 
           // the new cost minus the old cost
-          double evalCost = pathCost(new Point[] { pathPoint, freePoint, nextPathPoint }) -
-              pathCost(new Point[] { pathPoint, nextPathPoint });
+          double evalCost = pathCost(new Address[] { pathPoint, freePoint, nextPathPoint }) -
+              pathCost(new Address[] { pathPoint, nextPathPoint });
 
           if (evalCost < bestCost) {
             bestCost = evalCost;
@@ -80,9 +79,9 @@ public class convexHull {
 
         // figure out how "much" more expensive this is with respect to the
         // overall length of the segment
-        Point nextPoint = path.get((bestIdx + 1) % path.size());
-        double prevCost = pathCost(new Point[] { path.get(bestIdx), nextPoint });
-        double newCost = pathCost(new Point[] { path.get(bestIdx), freePoint, nextPoint });
+        Address nextPoint = path.get((bestIdx + 1) % path.size());
+        double prevCost = pathCost(new Address[] { path.get(bestIdx), nextPoint });
+        double newCost = pathCost(new Address[] { path.get(bestIdx), freePoint, nextPoint });
         double ratio = newCost / prevCost;
 
         if (ratio < bestRatio) {
@@ -92,7 +91,7 @@ public class convexHull {
         }
       }
 
-      Point nextPoint = points.remove(bestPointIdx);
+      Address nextPoint = points.remove(bestPointIdx);
       path.add(insertIdx, nextPoint);
     }
 
@@ -104,7 +103,7 @@ public class convexHull {
         break;
       }
     }
-    List<Point> rotatedPath = new ArrayList<>(path.subList(startIdx, path.size()));
+    List<Address> rotatedPath = new ArrayList<>(path.subList(startIdx, path.size()));
     rotatedPath.addAll(path.subList(0, startIdx));
 
     // go back home
@@ -113,15 +112,15 @@ public class convexHull {
     return rotatedPath;
   }
 
-  private static int orientation(Point p, Point q, Point r) {
-    double val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
+  private static int orientation(Address p, Address q, Address r) {
+    double val = (q.blockY - p.blockY) * (r.blockX - q.blockX) - (q.blockX - p.blockX) * (r.blockY - q.blockY);
     if (val == 0) {
       return 0; // collinear
     }
     return val > 0 ? 1 : 2; // clockwise or counterclockwise
   }
 
-  public static double pathCost(Point[] path) {
+  public static double pathCost(Address[] path) {
     double cost = 0;
     for (int i = 0; i < path.length - 1; i++) {
       cost += distance(path[i], path[i + 1]);
@@ -129,11 +128,11 @@ public class convexHull {
     return cost;
   }
 
-  public static double distance(Point pt1, Point pt2) {
-    double lng1 = pt1.x;
-    double lat1 = pt1.y;
-    double lng2 = pt2.x;
-    double lat2 = pt2.y;
+  public static double distance(Address pt1, Address pt2) {
+    double lng1 = pt1.blockX;
+    double lat1 = pt1.blockY;
+    double lng2 = pt2.blockX;
+    double lat2 = pt2.blockY;
     if (lat1 == lat2 && lng1 == lng2) {
       return 0;
     }
