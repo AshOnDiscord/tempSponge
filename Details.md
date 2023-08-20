@@ -6,8 +6,8 @@
 - 10 homes on each side of a block(20 total)
 - block are 1000ftx200
 - bikini bottom is 100kx100kft
-- there are 500 streets(e to w) with 200ft gap
-- 100 avenues(n to s) 1000ft apart
+- there are 500 streets(e to w) with 200ft gap (xx)
+- 100 avenues(n to s) 1000ft apart (y)
 - Each street have 2000 homes
 
 Spongbob complex

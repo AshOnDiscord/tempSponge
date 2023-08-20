@@ -1,23 +1,29 @@
 552
-Truck [x=8, y=7, miles=232.76]
-103491.40000000001
-Employee [hours=90810]
-4086330
+Truck [x=8, y=7, miles=281.76]
+104226.40000000001
+Employee [hours=98760]
+4444080
 
 569
-Truck [x=146, y=18, miles=254.0]
-103810.0
-Employee [hours=94560]
-4255080
+Truck [x=146, y=18, miles=232.48]
+103487.2
+Employee [hours=90900]
+4090380
 
 583
-Truck [x=12, y=48, miles=231.68]
-103475.2
-Employee [hours=96180]
-4327980
+Truck [x=12, y=48, miles=279.04]
+104185.59999999999
+Employee [hours=103380]
+4651980
 
 632
-Truck [x=126, y=43, miles=301.24]
-104518.59999999999
-Employee [hours=111690]
-5025930
+Truck [x=126, y=43, miles=276.4]
+104146.0
+Employee [hours=107940]
+4857180
+
+2,336
+416,045.20
+1,069.68
+18,043,620
+400,980

@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,10 +68,10 @@ public class parser {
       List<Address> SWPath = christofidesWrapper(SWSide);
       List<Address> SEPath = christofidesWrapper(SESide);
 
-      Truck NWTruck = new Truck(0, 0);
-      Truck NETruck = new Truck(0, 0);
-      Truck SWTruck = new Truck(0, 0);
-      Truck SETruck = new Truck(0, 0);
+      Truck NWTruck = new Truck(125, 22);
+      Truck NETruck = new Truck(125, 22);
+      Truck SWTruck = new Truck(125, 22);
+      Truck SETruck = new Truck(125, 22);
       Employee NWEmployee = new Employee();
       Employee NEEmployee = new Employee();
       Employee SWEmployee = new Employee();
@@ -83,15 +84,19 @@ public class parser {
       for (Address a : NWPath) {
         NWTruck.deliver(a.blockX, a.blockY);
       }
+      NWTruck.origin();
       for (Address a : NEPath) {
         NETruck.deliver(a.blockX, a.blockY);
       }
+      NETruck.origin();
       for (Address a : SWPath) {
         SWTruck.deliver(a.blockX, a.blockY);
       }
+      SWTruck.origin();
       for (Address a : SEPath) {
         SETruck.deliver(a.blockX, a.blockY);
       }
+      SETruck.origin();
 
       System.out.println();
       System.out.println(NWPath.size());
@@ -118,6 +123,18 @@ public class parser {
       System.out.println(SEEmployee);
       System.out.println(SEEmployee.cost());
       System.out.println();
+
+      DecimalFormat formatter = new DecimalFormat("#,###.00");
+      DecimalFormat formatter2 = new DecimalFormat("#,###");
+
+      System.out.println(formatter2.format(NWPath.size() + NEPath.size() + SWPath.size() + SEPath.size()));
+      System.out.println(formatter.format(NWTruck.cost() + NETruck.cost() + SWTruck.cost() + SETruck.cost()));
+      System.out.println(
+          formatter.format((NWTruck.distance / 5000.0) + (NETruck.distance / 5000.0) + (SWTruck.distance / 5000.0)
+              + (SETruck.distance / 5000.0)));
+      System.out
+          .println(formatter2.format(NWEmployee.cost() + NEEmployee.cost() + SWEmployee.cost() + SEEmployee.cost()));
+      System.out.println(formatter2.format(NWEmployee.hours + NEEmployee.hours + SWEmployee.hours + SEEmployee.hours));
 
     } catch (FileNotFoundException e) {
       // TODO Auto-generated catch block
@@ -210,12 +227,16 @@ class Address {
 }
 
 class Truck {
+  public int originX;
+  public int originY;
   public int x;
   public int y;
   public Employee[] employees = new Employee[2];
   public int distance;
 
   public Truck(int x, int y) {
+    this.originX = x;
+    this.originY = y;
     this.x = x;
     this.y = y;
     this.distance = 0;
@@ -247,6 +268,19 @@ class Truck {
 
     this.x = x;
     this.y = y;
+  }
+
+  public void origin() {
+    int xDiff = Math.abs(this.x - originX);
+    int yDiff = Math.abs(this.y - originY);
+    // 30 seconds per block
+    for (Employee e : employees) {
+      if (e == null) {
+        continue;
+      }
+      e.hours += (xDiff + yDiff) * 30;
+    }
+    this.distance += xDiff * 1000 + yDiff * 200;
   }
 
   @Override
