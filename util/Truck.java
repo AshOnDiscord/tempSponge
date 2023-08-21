@@ -21,7 +21,10 @@ public class Truck {
     // 5 dollars per mile for gas
     // 1000 dollars per 100 miles for maintenance
     double miles = distance / 5000.0;
-    return 100000 + (5 * miles) + (1000 * (miles / 100));
+    // int base = 100000;
+    int base = 10000; // 100k / 10 days = 10k per day, this is so it doesn't overly skew towards
+                      // favoring renting
+    return base + (5 * miles) + (1000 * (miles / 100));
   }
 
   public void deliver(int x, int y) {

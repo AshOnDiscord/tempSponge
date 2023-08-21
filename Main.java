@@ -152,7 +152,7 @@ public class Main {
       truckCost += truck.cost();
       employeeCost += truck.employees[0].cost();
     }
-    System.out.println(String.format("Total Truck Cost: $%,.2f", truckCost));
+    System.out.println(String.format("Total Truck Cost: $%,.2f(%s trucks)", truckCost, trucks.size()));
     System.out.println(String.format("Total Employee Cost: $%,.2f", employeeCost));
     System.out.println(String.format("Total Cost: $%,.2f", truckCost + employeeCost));
   }
