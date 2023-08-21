@@ -1,17 +1,69 @@
-CycleInfo [cycleNumber=1, totalPackages=2647, addresses=2336]
+Truck [x=0, y=0, miles=51.44] | $100,771.60
+Employee [hours=5.8] | $142.50
 
-Truck [x=125, y=23, miles=258.56] | $103,878.40
-Employee [hours=90900] | $4,090,380
+Truck [x=0, y=0, miles=64.08] | $100,961.20
+Employee [hours=6.1] | $152.25
 
-Truck [x=125, y=23, miles=214.88] | $103,223.20
-Employee [hours=85260] | $3,836,580
+Truck [x=0, y=0, miles=69.68] | $101,045.20
+Employee [hours=5.9] | $143.25
 
-Truck [x=125, y=23, miles=275.6] | $104,134.00
-Employee [hours=110340] | $4,965,180
+Truck [x=0, y=0, miles=87.28] | $101,309.20
+Employee [hours=6.8] | $186.00
 
-Truck [x=125, y=23, miles=315.92] | $104,738.80
-Employee [hours=112620] | $5,067,780
+Truck [x=0, y=0, miles=83.6] | $101,254.00
+Employee [hours=5.9] | $144.00
 
-Total Truck Cost: $415,974.40
-Total Employee Cost: $17,959,920
-Total Cost: $18,375,894.40
+Truck [x=0, y=0, miles=102.88] | $101,543.20
+Employee [hours=7.0] | $192.75
+
+Truck [x=0, y=0, miles=99.36] | $101,490.40
+Employee [hours=6.1] | $156.00
+
+Truck [x=0, y=0, miles=104.16] | $101,562.40
+Employee [hours=6.5] | $170.25
+
+Truck [x=0, y=0, miles=110.4] | $101,656.00
+Employee [hours=6.6] | $178.50
+
+Truck [x=0, y=0, miles=118.88] | $101,783.20
+Employee [hours=7.1] | $199.50
+
+Truck [x=0, y=0, miles=49.28] | $100,739.20
+Employee [hours=6.0] | $151.50
+
+Truck [x=0, y=0, miles=66.96] | $101,004.40
+Employee [hours=6.6] | $177.00
+
+Truck [x=0, y=0, miles=71.68] | $101,075.20
+Employee [hours=6.5] | $171.00
+
+Truck [x=0, y=0, miles=81.92] | $101,228.80
+Employee [hours=6.4] | $165.75
+
+Truck [x=0, y=0, miles=84.56] | $101,268.40
+Employee [hours=6.6] | $175.50
+
+Truck [x=0, y=0, miles=90.8] | $101,362.00
+Employee [hours=6.7] | $179.25
+
+Truck [x=0, y=0, miles=96.64] | $101,449.60
+Employee [hours=6.5] | $172.50
+
+Truck [x=0, y=0, miles=106.8] | $101,602.00
+Employee [hours=7.3] | $206.25
+
+Truck [x=0, y=0, miles=106.32] | $101,594.80
+Employee [hours=6.7] | $180.75
+
+Truck [x=0, y=0, miles=104.16] | $101,562.40
+Employee [hours=5.9] | $147.00
+
+Truck [x=0, y=0, miles=117.6] | $101,764.00
+Employee [hours=6.9] | $190.50
+
+Truck [x=0, y=0, miles=105.6] | $101,584.00
+Employee [hours=5.4] | $123.75
+
+Total Truck Cost: $2,229,611.20
+Total Employee Cost: $3,705.75
+Total Cost: $2,233,316.95

@@ -29,4 +29,9 @@ public class Address {
       System.out.println("Error parsing address: " + address);
     }
   }
+
+  @Override
+  public String toString() {
+    return String.format("%ds,%da,%s", blockX, blockY, blockNumber);
+  }
 }

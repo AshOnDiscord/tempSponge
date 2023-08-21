@@ -35,8 +35,8 @@ public class Truck {
       if (e == null) {
         continue;
       }
-      e.hours += (xDiff + yDiff) * 30;
-      e.hours += 60; // 1 minute per package
+      e.time += (xDiff + yDiff) * 30;
+      e.time += 60; // 1 minute per package
     }
     this.distance += xDiff * 1000 + yDiff * 200;
 
@@ -52,7 +52,7 @@ public class Truck {
       if (e == null) {
         continue;
       }
-      e.hours += (xDiff + yDiff) * 30;
+      e.time += (xDiff + yDiff) * 30;
     }
     this.distance += xDiff * 1000 + yDiff * 200;
     this.x = originX;
