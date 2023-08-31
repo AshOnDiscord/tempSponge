@@ -1,0 +1,50 @@
+CycleInfo [cycleNumber=1, totalPackages=4940, addresses=4629 spongeBobPackages=190, patrickPackages=121]
+Total Truck Cost: $5,157,802.80(49 trucks)
+Total Employee Cost: $9,034.75
+Total Cost: $5,166,837.55
+
+CycleInfo [cycleNumber=2, totalPackages=4676, addresses=3965 spongeBobPackages=290, patrickPackages=421]
+Total Truck Cost: $5,408,415.80(49 trucks)
+Total Employee Cost: $17,024.00
+Total Cost: $5,425,439.80
+
+CycleInfo [cycleNumber=3, totalPackages=3441, addresses=2877 spongeBobPackages=120, patrickPackages=444]
+Total Truck Cost: $5,447,514.80(49 trucks)
+Total Employee Cost: $23,177.13
+Total Cost: $5,470,691.93
+
+CycleInfo [cycleNumber=4, totalPackages=2544, addresses=1980 spongeBobPackages=120, patrickPackages=444]
+Total Truck Cost: $5,477,592.80(49 trucks)
+Total Employee Cost: $27,908.13
+Total Cost: $5,505,500.93
+
+CycleInfo [cycleNumber=5, totalPackages=2419, addresses=2088 spongeBobPackages=110, patrickPackages=221]
+Total Truck Cost: $5,506,735.40(49 trucks)
+Total Employee Cost: $32,627.38
+Total Cost: $5,539,362.78
+
+CycleInfo [cycleNumber=6, totalPackages=5877, addresses=5078 spongeBobPackages=300, patrickPackages=499]
+Total Truck Cost: $5,868,714.80(52 trucks)
+Total Employee Cost: $42,610.13
+Total Cost: $5,911,324.92
+
+CycleInfo [cycleNumber=7, totalPackages=4684, addresses=3986 spongeBobPackages=299, patrickPackages=399]
+Total Truck Cost: $5,920,896.80(52 trucks)
+Total Employee Cost: $50,845.13
+Total Cost: $5,971,741.92
+
+CycleInfo [cycleNumber=8, totalPackages=3297, addresses=2986 spongeBobPackages=190, patrickPackages=121]
+Total Truck Cost: $5,961,412.40(52 trucks)
+Total Employee Cost: $57,191.38
+Total Cost: $6,018,603.77
+
+CycleInfo [cycleNumber=9, totalPackages=2789, addresses=1989 spongeBobPackages=300, patrickPackages=500]
+Total Truck Cost: $5,990,548.40(52 trucks)
+Total Employee Cost: $61,976.88
+Total Cost: $6,052,525.27
+
+CycleInfo [cycleNumber=10, totalPackages=1947, addresses=1947 spongeBobPackages=0, patrickPackages=0]
+Total Truck Cost: $6,016,673.60(52 trucks)
+Total Employee Cost: $66,062.38
+Total Cost: $6,082,735.98
+
