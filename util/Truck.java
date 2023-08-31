@@ -46,34 +46,61 @@ public class Truck {
     this.y = y;
   }
 
-  public void deliver(int x, int y, int houseLettering) {
-    System.out.println("Delivering to " + x + ", " + y + ", " + houseLettering);
-    int xDiff = x - this.x;
-    if (xDiff >= 0) {
-      System.out.println("ltr");
-      // driving in from the left(0,0 is top left)
-      //
-      // ABCDEFGHIJ
-      // 0123456789
-      //
-      int time = ((houseLettering % 10) + 1) * 6; // % 10 to treat a and aa the same, etc,
-      for (Employee e : employees) {
-        if (e == null) {
-          continue;
-        }
-        e.time += time + 60; // 1m for the package
-      }
-    } else {
-      System.out.println("rtl");
-      // driving in from the right
-      int time = (11 - ((houseLettering % 10) + 1)) * 6;
-      for (Employee e : employees) {
-        if (e == null) {
-          continue;
-        }
-        e.time += time + 60; // 1m for the package
-      }
+  public void deliver(Address A, Address B) {
+    System.out.println("Delivering to " + A.blockX + ", " + A.blockY + ", " + A.blockNumber);
+    // if going to the next Address(B) after the current one(A) is in the same
+    // direction
+    // do a full drive rather than a partial drive through the block
+    int xDiff = A.blockX - this.x;
+    int xDiff2 = 0;
+    if (B != null) {
+      xDiff = B.blockX - this.x;
     }
+    boolean sameDir = false;
+    if (xDiff > 0 && xDiff2 > 0) {
+      sameDir = true; // going right
+    } else if (xDiff < 0 && xDiff2 < 0) {
+      sameDir = true; // going left
+    }
+    this.driveTo(A.blockX, A.blockY);
+    // TODO: for full drive, drive the closest side of the same block
+    // instead(currently you will always drive the top left)
+    if (sameDir && B != null) { // partial driving, if B is null then we do a full drive
+      if (xDiff >= 0) {
+        System.out.println("ltr");
+        // driving in from the left(0,0 is top left)
+        //
+        // ABCDEFGHIJ
+        // 0123456789
+        //
+        int time = ((A.blockNumber % 10) + 1) * 6; // % 10 to treat a and aa the same, etc,
+        for (Employee e : employees) {
+          if (e == null) {
+            continue;
+          }
+          e.time += time + 60; // 1m for the package
+        }
+      } else {
+        System.out.println("rtl");
+        // driving in from the right
+        int time = (11 - ((A.blockNumber % 10) + 1)) * 6;
+        for (Employee e : employees) {
+          if (e == null) {
+            continue;
+          }
+          e.time += time + 60; // 1m for the package
+        }
+      }
+    } else { // full drive
+      for (Employee e : employees) {
+        if (e == null) {
+          continue;
+        }
+        e.time += 30 + 60; // 30s for the drive, 1m for the package
+      }
+      this.x += xDiff > 0 ? 1 : -1; // truck ends up on the other side of the block
+    }
+
   }
 
   public void origin() {

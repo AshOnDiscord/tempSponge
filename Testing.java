@@ -32,7 +32,7 @@ public class Testing {
     Employee e = new Employee();
     t.employees[0] = e;
 
-    t.deliver(0, 0, HouseLettering.J);
+    // t.deliver(0, 0, HouseLettering.J);
 
     System.out.println(e.time);
   }

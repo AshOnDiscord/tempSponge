@@ -164,8 +164,11 @@ public class Main {
     }
 
     for (int i = 0; i < trucks.size(); i++) {
-      for (Address address : paths.get(i)) {
-        trucks.get(i).deliver(address.blockX, address.blockY);
+      // for (Address address : paths.get(i)) {
+      for (int j = 0; j < paths.get(i).size(); j++) {
+        Address address = paths.get(i).get(j);
+        Address nextAddress = j + 1 < paths.get(i).size() ? paths.get(i).get(j + 1) : null;
+        trucks.get(i).deliver(address, nextAddress);
       }
       trucks.get(i).origin();
     }
@@ -237,8 +240,11 @@ public class Main {
     // System.out.println(address);
     // }
     List<Address> path = Christofides.addressWrapper(Arrays.asList(section));
-    for (Address address : path) {
-      truck.deliver(address.blockX, address.blockY);
+    // for (Address address : path) {
+    for (int i = 0; i < path.size(); i++) {
+      Address address = path.get(i);
+      Address nextAddress = i + 1 < path.size() ? path.get(i + 1) : null;
+      truck.deliver(address, nextAddress);
     }
     truck.origin();
     return employee.time; // in seconds, 28800 is 8 hours or the non overtime limit

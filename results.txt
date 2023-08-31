@@ -1,69 +1,88 @@
-Truck [x=0, y=0, miles=51.44] | $100,771.60
-Employee [hours=5.8] | $142.50
+CycleInfo [cycleNumber=1, totalPackages=2647, addresses=2336 spongeBobPackages=190, patrickPackages=121]
 
-Truck [x=0, y=0, miles=64.08] | $100,961.20
-Employee [hours=6.1] | $152.25
+Truck [x=0, y=0, miles=34.36] | $10,515.40
+Employee [hours=5.4] | $161.00
 
-Truck [x=0, y=0, miles=69.68] | $101,045.20
-Employee [hours=5.9] | $143.25
+Truck [x=0, y=0, miles=54.04] | $10,810.60
+Employee [hours=6.7] | $199.50
 
-Truck [x=0, y=0, miles=87.28] | $101,309.20
-Employee [hours=6.8] | $186.00
+Truck [x=0, y=0, miles=56.6] | $10,849.00
+Employee [hours=5.8] | $173.00
 
-Truck [x=0, y=0, miles=83.6] | $101,254.00
-Employee [hours=5.9] | $144.00
+Truck [x=0, y=0, miles=65.32] | $10,979.80
+Employee [hours=5.9] | $175.50
 
-Truck [x=0, y=0, miles=102.88] | $101,543.20
-Employee [hours=7.0] | $192.75
+Truck [x=0, y=0, miles=70.64] | $11,059.60
+Employee [hours=6.0] | $181.00
 
-Truck [x=0, y=0, miles=99.36] | $101,490.40
-Employee [hours=6.1] | $156.00
+Truck [x=0, y=0, miles=78.6] | $11,179.00
+Employee [hours=6.1] | $183.00
 
-Truck [x=0, y=0, miles=104.16] | $101,562.40
-Employee [hours=6.5] | $170.25
+Truck [x=0, y=0, miles=90.68] | $11,360.20
+Employee [hours=6.6] | $196.50
 
-Truck [x=0, y=0, miles=110.4] | $101,656.00
-Employee [hours=6.6] | $178.50
+Truck [x=0, y=0, miles=99.4] | $11,491.00
+Employee [hours=6.5] | $195.50
 
-Truck [x=0, y=0, miles=118.88] | $101,783.20
-Employee [hours=7.1] | $199.50
+Truck [x=0, y=0, miles=100.28] | $11,504.20
+Employee [hours=6.9] | $206.50
 
-Truck [x=0, y=0, miles=49.28] | $100,739.20
-Employee [hours=6.0] | $151.50
+Truck [x=0, y=0, miles=108.44] | $11,626.60
+Employee [hours=7.1] | $213.50
 
-Truck [x=0, y=0, miles=66.96] | $101,004.40
-Employee [hours=6.6] | $177.00
+Truck [x=0, y=0, miles=118.16] | $11,772.40
+Employee [hours=7.6] | $228.00
 
-Truck [x=0, y=0, miles=71.68] | $101,075.20
-Employee [hours=6.5] | $171.00
+Truck [x=0, y=0, miles=36.48] | $10,547.20
+Employee [hours=5.6] | $169.00
 
-Truck [x=0, y=0, miles=81.92] | $101,228.80
-Employee [hours=6.4] | $165.75
+Truck [x=0, y=0, miles=47.4] | $10,711.00
+Employee [hours=6.1] | $182.00
 
-Truck [x=0, y=0, miles=84.56] | $101,268.40
-Employee [hours=6.6] | $175.50
+Truck [x=0, y=0, miles=50.24] | $10,753.60
+Employee [hours=5.6] | $167.50
 
-Truck [x=0, y=0, miles=90.8] | $101,362.00
-Employee [hours=6.7] | $179.25
+Truck [x=0, y=0, miles=63.4] | $10,951.00
+Employee [hours=6.9] | $207.00
 
-Truck [x=0, y=0, miles=96.64] | $101,449.60
-Employee [hours=6.5] | $172.50
+Truck [x=0, y=0, miles=72.12] | $11,081.80
+Employee [hours=6.3] | $188.00
 
-Truck [x=0, y=0, miles=106.8] | $101,602.00
-Employee [hours=7.3] | $206.25
+Truck [x=0, y=0, miles=83.72] | $11,255.80
+Employee [hours=7.5] | $224.50
 
-Truck [x=0, y=0, miles=106.32] | $101,594.80
-Employee [hours=6.7] | $180.75
+Truck [x=0, y=0, miles=80.16] | $11,202.40
+Employee [hours=6.4] | $193.00
 
-Truck [x=0, y=0, miles=104.16] | $101,562.40
-Employee [hours=5.9] | $147.00
+Truck [x=0, y=0, miles=93.08] | $11,396.20
+Employee [hours=7.3] | $220.00
 
-Truck [x=0, y=0, miles=117.6] | $101,764.00
-Employee [hours=6.9] | $190.50
+Truck [x=0, y=0, miles=91.24] | $11,368.60
+Employee [hours=6.2] | $185.00
 
-Truck [x=0, y=0, miles=105.6] | $101,584.00
-Employee [hours=5.4] | $123.75
+Truck [x=0, y=0, miles=98.96] | $11,484.40
+Employee [hours=7.3] | $217.50
 
-Total Truck Cost: $2,229,611.20
-Total Employee Cost: $3,705.75
-Total Cost: $2,233,316.95
+Truck [x=0, y=0, miles=105.28] | $11,579.20
+Employee [hours=6.8] | $205.00
+
+Truck [x=0, y=0, miles=106.96] | $11,604.40
+Employee [hours=6.5] | $195.00
+
+Truck [x=0, y=0, miles=114.16] | $11,712.40
+Employee [hours=6.8] | $205.00
+
+Truck [x=0, y=0, miles=105.2] | $11,578.00
+Employee [hours=5.3] | $159.50
+
+SpongeBob
+Truck [x=0, y=0, miles=1.04] | $10,015.60
+Employee [hours=1.7] | $50.00
+
+Patrick
+Truck [x=0, y=0, miles=62.24] | $10,933.60
+Employee [hours=4.0] | $121.25
+
+Total Truck Cost: $301,323.00(25 trucks)
+Total Employee Cost: $5,002.25
+Total Cost: $306,325.25
