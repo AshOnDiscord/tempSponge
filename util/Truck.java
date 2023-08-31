@@ -46,13 +46,33 @@ public class Truck {
     this.y = y;
   }
 
-  public void deliver(int x, int y) {
-    this.driveTo(x, y);
-    for (Employee e : employees) {
-      if (e == null) {
-        continue;
+  public void deliver(int x, int y, int houseLettering) {
+    System.out.println("Delivering to " + x + ", " + y + ", " + houseLettering);
+    int xDiff = x - this.x;
+    if (xDiff >= 0) {
+      System.out.println("ltr");
+      // driving in from the left(0,0 is top left)
+      //
+      // ABCDEFGHIJ
+      // 0123456789
+      //
+      int time = ((houseLettering % 10) + 1) * 6; // % 10 to treat a and aa the same, etc,
+      for (Employee e : employees) {
+        if (e == null) {
+          continue;
+        }
+        e.time += time + 60; // 1m for the package
       }
-      e.time += 60; // 1 minute per package
+    } else {
+      System.out.println("rtl");
+      // driving in from the right
+      int time = (11 - ((houseLettering % 10) + 1)) * 6;
+      for (Employee e : employees) {
+        if (e == null) {
+          continue;
+        }
+        e.time += time + 60; // 1m for the package
+      }
     }
   }
 
