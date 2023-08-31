@@ -20,7 +20,7 @@ Patrick Complex
 - 200x1000ft
 - 500 units
 - 149th 150th street 
-- 33th 3rth aveunes
+- 33th 34th aveunes
 
 Distribution Center
 - 200x1000ft

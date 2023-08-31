@@ -7,7 +7,7 @@ public class Employee {
     // 30 dollars per hour
     // 45 instead if overtime
     double hours = time / 3600.0;
-    return 30.0 * hours + 15.0 * (hours - 8);
+    return 30.0 * hours + 15.0 * Math.max((hours - 8), 0); // max() is to prevent negative overtime
   }
 
   @Override

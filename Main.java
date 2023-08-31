@@ -17,6 +17,42 @@ public class Main {
     ArrayList<Truck> trucks = new ArrayList<Truck>();
     List<ArrayList<Address>> sections = new ArrayList<ArrayList<Address>>();
 
+    // create trucks for the complexes
+    List<ArrayList<Object>> spongeBob = new ArrayList<ArrayList<Object>>();
+    int spongeBobMax = Truck.complexMax(2, 3);
+    int unallocatedSpongeBobPackages = cycleInfo.spongeBobPackages;
+    while (unallocatedSpongeBobPackages > 0) {
+      Truck truck = new Truck(0, 0);
+      Employee employee = new Employee();
+      truck.employees[0] = employee;
+      int packages = Math.min(spongeBobMax, unallocatedSpongeBobPackages);
+      // deliver to the complex
+      truck.driveTo(2, 3);
+      employee.time += 30 * packages;
+      truck.origin();
+
+      // add the truck to the list
+      spongeBob.add(new ArrayList<Object>(Arrays.asList(truck, employee, packages)));
+      unallocatedSpongeBobPackages -= spongeBobMax;
+    }
+    List<ArrayList<Object>> patrick = new ArrayList<ArrayList<Object>>();
+    int patrickMax = Truck.complexMax(149, 33);
+    int unallocatedPatrickPackages = cycleInfo.patrickPackages;
+    while (unallocatedPatrickPackages > 0) {
+      Truck truck = new Truck(0, 0);
+      Employee employee = new Employee();
+      truck.employees[0] = employee;
+      int packages = Math.min(patrickMax, unallocatedPatrickPackages);
+      // deliver to the complex
+      truck.driveTo(149, 33);
+      employee.time += 30 * packages;
+      truck.origin();
+
+      // add the truck to the list
+      patrick.add(new ArrayList<Object>(Arrays.asList(truck, employee, packages)));
+      unallocatedPatrickPackages -= patrickMax;
+    }
+
     // create squares starting from 0,0 expand by 5 in each
     // direction until simulate is > 28800(8 hours)
     // then push the section to sections
@@ -145,12 +181,36 @@ public class Main {
       System.out.println(String.format(" | $%,.2f", truck.employees[0].cost()));
       System.out.println();
     }
+    System.out.println("SpongeBob");
+    for (ArrayList<Object> truck : spongeBob) {
+      System.out.print(truck.get(0));
+      System.out.println(String.format(" | $%,.2f", ((Truck) truck.get(0)).cost()));
+      System.out.print(truck.get(1));
+      System.out.println(String.format(" | $%,.2f", ((Employee) truck.get(1)).cost()));
+      System.out.println();
+    }
+    System.out.println("Patrick");
+    for (ArrayList<Object> truck : patrick) {
+      System.out.print(truck.get(0));
+      System.out.println(String.format(" | $%,.2f", ((Truck) truck.get(0)).cost()));
+      System.out.print(truck.get(1));
+      System.out.println(String.format(" | $%,.2f", ((Employee) truck.get(1)).cost()));
+      System.out.println();
+    }
 
     double truckCost = 0.0;
     double employeeCost = 0;
     for (Truck truck : trucks) {
       truckCost += truck.cost();
       employeeCost += truck.employees[0].cost();
+    }
+    for (ArrayList<Object> truck : spongeBob) {
+      truckCost += ((Truck) truck.get(0)).cost();
+      employeeCost += ((Employee) truck.get(1)).cost();
+    }
+    for (ArrayList<Object> truck : patrick) {
+      truckCost += ((Truck) truck.get(0)).cost();
+      employeeCost += ((Employee) truck.get(1)).cost();
     }
     System.out.println(String.format("Total Truck Cost: $%,.2f(%s trucks)", truckCost, trucks.size()));
     System.out.println(String.format("Total Employee Cost: $%,.2f", employeeCost));

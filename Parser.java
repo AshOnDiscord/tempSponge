@@ -26,8 +26,14 @@ public class Parser {
           cycleInfo.addresses = new ArrayList<Address>();
           cycleInfo.addresses.add(new Address(st));
         } else if (st.contains("SpongeBob") || st.contains("Patrick")) {
-          // TODO: Handle the complexes
-          break;
+          // read number from next line
+          boolean isSpongeBob = st.contains("SpongeBob");
+          st = br.readLine();
+          if (isSpongeBob) {
+            cycleInfo.spongeBobPackages = Integer.parseInt(st);
+          } else {
+            cycleInfo.patrickPackages = Integer.parseInt(st);
+          }
         } else {
           cycleInfo.addresses.add(new Address(st));
         }

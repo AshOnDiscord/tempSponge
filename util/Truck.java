@@ -27,7 +27,7 @@ public class Truck {
     return base + (5 * miles) + (1000 * (miles / 100));
   }
 
-  public void deliver(int x, int y) {
+  public void driveTo(int x, int y) {
     // calculate distance
     // add distance to miles
     // set x and y
@@ -39,12 +39,21 @@ public class Truck {
         continue;
       }
       e.time += (xDiff + yDiff) * 30;
-      e.time += 60; // 1 minute per package
     }
     this.distance += xDiff * 1000 + yDiff * 200;
 
     this.x = x;
     this.y = y;
+  }
+
+  public void deliver(int x, int y) {
+    this.driveTo(x, y);
+    for (Employee e : employees) {
+      if (e == null) {
+        continue;
+      }
+      e.time += 60; // 1 minute per package
+    }
   }
 
   public void origin() {
@@ -65,5 +74,36 @@ public class Truck {
   @Override
   public String toString() {
     return "Truck [x=" + x + ", y=" + y + ", miles=" + (distance / 5000.0) + "]";
+  }
+
+  public static int complexMax(int x, int y) {
+    // calculate the max packages that the truck can deliver before overtime
+    // 8 hours = 28800 seconds
+    // 30 seconds per package
+    // 100 packages per trip
+    // // the complex is located at 2, 3
+    // the truck is located at the origin
+    Truck temp = new Truck(0, 0);
+    Employee tempE = new Employee();
+    temp.employees[0] = tempE;
+    int travelTime = 0;
+    // temp.driveTo(2, 3);
+    temp.driveTo(x, y);
+    temp.origin();
+    travelTime = tempE.time;
+
+    int time = 0;
+    int packages = 0;
+    while (time + travelTime < 28800) {
+      time += travelTime;
+      time += 100 * 30;
+      packages += 100;
+      while (time > 28800) {
+        // remove packages until time is less than 8 hours
+        time -= 30;
+        packages -= 1;
+      }
+    }
+    return packages;
   }
 }
